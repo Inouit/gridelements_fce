@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2012-06-13T20:22:32Z" product-name="adx_gridelements_columns">
+    <header/>
+    <body>
+      <trans-unit id="flexform.CType" xml:space="preserve">
+        <source>Content type: </source>
+      </trans-unit>
+      <trans-unit id="flexform.fieldName" xml:space="preserve">
+        <source>Field name</source>
+      </trans-unit>
+      <trans-unit id="flexform.value" xml:space="preserve">
+        <source>Field value</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
