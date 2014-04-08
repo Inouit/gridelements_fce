@@ -12,6 +12,9 @@
       <trans-unit id="flexform.value" xml:space="preserve">
         <source>Field value</source>
       </trans-unit>
+      <trans-unit id="flexform.nbItem" xml:space="preserve">
+        <source>Item's count</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

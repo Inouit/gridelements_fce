@@ -15,6 +15,10 @@
         <source>Field value</source>
         <target state="translated">Valeur</target>
       </trans-unit>
+      <trans-unit id="flexform.nbItem" xml:space="preserve" approved="yes">
+        <source>Item's count</source>
+        <target state="translated">Nombre d'éléments</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

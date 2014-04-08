@@ -33,8 +33,7 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
    */
   private function renderFlexformLayoutTable($layoutSetup, $row) {
     $grid = '';
-    $langPrefix = 'LLL:EXT:gridelementsFce/Resources/Private/Language/locallang_db.xlf:';
-
+    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xlf:';
 
     // Title
     $grid = '<strong>'.$this->lang->sL($langPrefix.'flexform.CType').'</strong>'.$this->lang->sL($layoutSetup['title']);
@@ -44,6 +43,7 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
       $fieldsToDisplay = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $layoutSetup['config']['display'], TRUE);
 
       $flexformConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($row['pi_flexform']);
+
       if(!empty($fieldsToDisplay) && is_array($flexformConfig['data']) && is_array($flexformConfig['data']['sDEF']) && is_array($flexformConfig['data']['sDEF']['lDEF'])) {
         $flex = $flexformConfig['data']['sDEF']['lDEF'];
 
@@ -56,10 +56,19 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
         $i = 0;
         foreach($fieldsToDisplay as $field) {
           if($flex[$field]) {
-            $grid .= '<tr class="bgColor' . ($i % 2 ? '1' : '4') . '">'
-              .'<td width="30%">' . $field . '</td>'
-              .'<td>' . $flex[$field]['vDEF'] . '</td>'
-              .'</tr>';
+            if(is_array($flex[$field]['el'])) {
+              // section
+              $grid .= '<tr class="bgColor' . ($i % 2 ? '1' : '4') . '">'
+                .'<td width="30%">' . $this->lang->sL($langPrefix.'flexform.nbItem') . '</td>'
+                .'<td>' . count($flex[$field]['el']) . '</td>'
+                .'</tr>';
+            }else {
+              // field
+              $grid .= '<tr class="bgColor' . ($i % 2 ? '1' : '4') . '">'
+                .'<td width="30%">' . $field . '</td>'
+                .'<td>' . $flex[$field]['vDEF'] . '</td>'
+                .'</tr>';
+            }
             $i++;
           }
         }
