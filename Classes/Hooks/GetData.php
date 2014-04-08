@@ -1,5 +1,5 @@
 <?php
-namespace Inouit\skinFlex\Hooks;
+namespace Inouit\gridelementsFce\Hooks;
 
 
 /**
