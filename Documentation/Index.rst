@@ -24,7 +24,7 @@ In Gallery Flickr
     en
 
   :Description:
-    This extension provide some hooks to make flexible content elemenents easier with `gridelements <http://typo3.org/extensions/repository/view/gridelements>`_ and a Yeoman generator to improve your development
+    This extension provide some hooks to make flexible content elements easier with `gridelements <http://typo3.org/extensions/repository/view/gridelements>`_. We\'ve published a Yeoman generator to improve your development (watch  documentation for more details)
 
   :Keywords:
     gridelements, fce, custom content, flexible content element, extbase, fluid
