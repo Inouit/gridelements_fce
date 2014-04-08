@@ -10,7 +10,7 @@
 
 $EM_CONF[$_EXTKEY] = array (
   'title' => 'Gridelements Extended for flexible content elements',
-  'description' => 'This extension provide some hooks to make flexible content elemenents easier with gridelements',
+  'description' => 'This extension provide some hooks to make flexible content elemenents easier with gridelements and a Yeoman generator to improve your development',
   'category' => 'plugin',
   'author' => '',
   'author_email' => 'gcopin@inouit.com',
@@ -27,7 +27,7 @@ $EM_CONF[$_EXTKEY] = array (
   'modify_tables' => '',
   'clearCacheOnLoad' => 1,
   'lockType' => '',
-  'version' => '0.0.1',
+  'version' => '1.0.0',
   'constraints' =>
   array (
     'depends' =>
