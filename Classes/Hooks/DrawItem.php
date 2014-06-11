@@ -12,15 +12,20 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
    * @return string
    */
   public function renderGridLayoutTable($layoutSetup, $row, $head, $gridContent) {
+
+    $content = '';
+    if(isset($layoutSetup['config']['display'])) {
+      $content .= $this->renderFlexformLayoutTable($layoutSetup, $row, $head, $gridContent);
+    }
+
     // add colgroups
     $colCount = intval($layoutSetup['config']['colCount']);
     $rowCount = intval($layoutSetup['config']['rowCount']);
-
-    if($colCount == 0 && $rowCount == 0){
-      return $this->renderFlexformLayoutTable($layoutSetup, $row, $head, $gridContent);
-    }else {
-      return parent::renderGridLayoutTable($layoutSetup, $row, $head, $gridContent);
+    if($colCount != 0 || $rowCount != 0) {
+      $content .= parent::renderGridLayoutTable($layoutSetup, $row, $head, $gridContent);
     }
+
+    return $content;
   }
 
 
