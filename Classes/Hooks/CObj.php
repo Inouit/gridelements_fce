@@ -25,6 +25,9 @@ class CObj implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetSingleHo
       case 'FLEXFORM_SECTION':
         $content = $this->FLEXFORM_SECTION($configuration);
         break;
+      case 'HEADER_DATA':
+        $content = $this->HEADER_DATA($configuration);
+        break;
       case 'INCLUDE_CSS':
         $content = $this->INCLUDE_CSS($configuration);
         break;
@@ -72,6 +75,22 @@ class CObj implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetSingleHo
     }
 
     return $content;
+  }
+
+  /**
+   * Header data inclusion
+   * @param array $conf TS Configuration
+   * @return  string
+   */
+  public function HEADER_DATA(array $conf) {
+    $additionalHeaderData = $this->cObj->stdWrap($conf['value'], $conf);
+
+    if ($additionalHeaderData !== '') {
+      $identifier = 'cObj.' . md5(trim($additionalHeaderData));
+      if (!isset($GLOBALS['TSFE']->additionalHeaderData[$identifier])) {
+        $GLOBALS['TSFE']->additionalHeaderData[$identifier] = $additionalHeaderData;
+      }
+    }
   }
 
   /**
