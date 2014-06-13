@@ -12,8 +12,13 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
    * @return string
    */
   public function renderGridLayoutTable($layoutSetup, $row, $head, $gridContent) {
-
     $content = '';
+
+    // Title
+    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xlf:';
+    $content = '<strong>'.$this->lang->sL($langPrefix.'flexform.CType').'</strong>'.$this->lang->sL($layoutSetup['title']);
+
+    // Flexform configuration
     if(isset($layoutSetup['config']['display'])) {
       $content .= $this->renderFlexformLayoutTable($layoutSetup, $row, $head, $gridContent);
     }
@@ -39,9 +44,6 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
   private function renderFlexformLayoutTable($layoutSetup, $row) {
     $grid = '';
     $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xlf:';
-
-    // Title
-    $grid = '<strong>'.$this->lang->sL($langPrefix.'flexform.CType').'</strong>'.$this->lang->sL($layoutSetup['title']);
 
     // Display values
     if ($layoutSetup['config'] && $layoutSetup['config']['display'] && !empty($layoutSetup['config']['display']) && !empty($row['pi_flexform'])) {
