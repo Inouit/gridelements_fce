@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+    <type>database</type>
+    <description>Language labels for database tables/fields belonging to extension 'gridelements_fce'</description>
+  </meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+      <label index="flexform.CType">Content type: </label>
+      <label index="flexform.fieldName">Field name</label>
+      <label index="flexform.value">Field value</label>
+      <label index="flexform.nbItem">Item's count</label>
+    </languageKey>
+    <languageKey index="fr" type="array">
+      <label index="flexform.CType">Type de contenu : </label>
+      <label index="flexform.fieldName">Champ</label>
+      <label index="flexform.value">Valeur</label>
+      <label index="flexform.nbItem">Nombre d'éléments</label>
+    </languageKey>
+  </data>
+</T3locallang>

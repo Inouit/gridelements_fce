@@ -1,10 +1,9 @@
 <?php
-namespace Inouit\gridelementsFce\Hooks;
 
 /**
  * This Hook is heavely based on the wec_contentelements hook. I've just implemented 6.2 compatibility and change some varriables name for, in my humble opinion, easiest understanding
  */
-class CObj implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetSingleHookInterface {
+class tx_gridelementsfce_cobjhook implements tslib_content_cObjGetSingleHook {
 
   protected $cObj;
   protected $pageRenderer;
@@ -18,7 +17,7 @@ class CObj implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetSingleHo
    * @param tslib_ccObj $parentObject: Back reference to parent cObject.
    * @return  string
    */
-  public function getSingleContentObject($contentObjectName, array $configuration, $TypoScriptKey, \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer &$parentObject) {
+  public function getSingleContentObject($contentObjectName, array $configuration, $TypoScriptKey, tslib_cObj &$parentObject) {
     $this->cObj =& $parentObject;
     $this->pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
     switch($contentObjectName) {
@@ -110,7 +109,7 @@ class CObj implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetSingleHo
           if ($cssFileConfig['import']) {
             if (!$cssFileConfig['external'] && $ss[0] !== '/') {
               // To fix MSIE 6 that cannot handle these as relative paths (according to Ben v Ende)
-              $ss = TYPO3\CMS\Core\Utility\GeneralUtility::dirname(GeneralUtility::getIndpEnv('SCRIPT_NAME')) . '/' . $ss;
+              $ss = t3lib_div::dirname(GeneralUtility::getIndpEnv('SCRIPT_NAME')) . '/' . $ss;
             }
             $this->pageRenderer->addCssInlineBlock('import_' . $key, '@import url("' . htmlspecialchars($ss) . '") ' . htmlspecialchars($cssFileConfig['media']) . ';', empty($cssFileConfig['disableCompression']), $cssFileConfig['forceOnTop'] ? TRUE : FALSE, '');
           } else {

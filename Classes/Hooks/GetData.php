@@ -1,11 +1,9 @@
 <?php
-namespace Inouit\gridelementsFce\Hooks;
-
 
 /**
- * This Hook is heavely based on the wec_contentelements hook. I've just implemented 6.2 compatibility and change some varriables name for, in my humble opinion, easiest understanding
+ * This Hook is heavely based on the wec_contentelements hook. I've just implemented 4.5 compatibility and change some varriables name for, in my humble opinion, easiest understanding
  */
-class GetData implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetDataHookInterface {
+class tx_gridelementsfce_getdatahook implements tslib_content_getDataHook {
 
   /**
    * Extends the getData()-Method of tslib_cObj to process more/other commands
@@ -17,7 +15,7 @@ class GetData implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectGetDataH
    * @param tslib_cObj  parent content object
    * @return  string    get data result
    */
-  public function getDataExtension($getDataString, array $fields, $sectionValue, $returnValue, \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer &$parentObject) {
+  public function getDataExtension($getDataString, array $fields, $sectionValue, $returnValue, tslib_cObj &$parentObject) {
     $parts = explode(':', $sectionValue, 2);
     $key = trim($parts[1]);
     if ((string) $key!='') {

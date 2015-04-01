@@ -1,6 +1,6 @@
 <?php
-namespace Inouit\gridelementsFce\Hooks;
-class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
+
+class tx_gridelementsfce_drawitemhook extends tx_gridelements_drawitemhook {
 
   /**
    * Renders the grid layout table after the HTML content for the single elements has been rendered
@@ -15,7 +15,7 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
     $content = '';
 
     // Title
-    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xlf:';
+    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xml:';
     $content = '<strong>'.$this->lang->sL($langPrefix.'flexform.CType').'</strong>'.$this->lang->sL($layoutSetup['title']);
 
     // Flexform configuration
@@ -43,13 +43,13 @@ class DrawItem extends \GridElementsTeam\Gridelements\Hooks\DrawItem {
    */
   private function renderFlexformLayoutTable($layoutSetup, $row) {
     $grid = '';
-    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xlf:';
+    $langPrefix = 'LLL:EXT:gridelements_fce/Resources/Private/Language/locallang_db.xml:';
 
     // Display values
     if ($layoutSetup['config'] && $layoutSetup['config']['display'] && !empty($layoutSetup['config']['display']) && !empty($row['pi_flexform'])) {
-      $fieldsToDisplay = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $layoutSetup['config']['display'], TRUE);
+      $fieldsToDisplay = t3lib_div::trimExplode(',', $layoutSetup['config']['display'], TRUE);
 
-      $flexformConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($row['pi_flexform']);
+      $flexformConfig = t3lib_div::xml2array($row['pi_flexform']);
 
       if(!empty($fieldsToDisplay) && is_array($flexformConfig['data']) && is_array($flexformConfig['data']['sDEF']) && is_array($flexformConfig['data']['sDEF']['lDEF'])) {
         $flex = $flexformConfig['data']['sDEF']['lDEF'];
